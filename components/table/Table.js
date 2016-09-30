@@ -9,6 +9,7 @@ import tableRowFactory from './TableRow.js';
 const factory = (TableHead, TableRow) => {
   class Table extends Component {
     static propTypes = {
+      children: PropTypes.node,
       className: PropTypes.string,
       heading: PropTypes.bool,
       model: PropTypes.object,
@@ -100,9 +101,10 @@ const factory = (TableHead, TableRow) => {
     }
 
     render () {
-      const { className, theme } = this.props;
+      const { className, children, theme } = this.props;
       return (
         <table data-react-toolbox='table' className={classnames(theme.table, className)}>
+          {children}
           {this.renderHead()}
           {this.renderBody()}
         </table>
